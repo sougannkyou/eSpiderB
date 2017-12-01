@@ -1,7 +1,7 @@
 # eSpider backend server for tasks
 
 ## Description
-Koa 2 RESTful API using :
+eSpiderB RESTful API using :
 
  - Koa 2
  - Mongodb + Mongoose
