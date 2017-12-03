@@ -4,24 +4,26 @@ class TasksControllers {
   /* eslint-disable no-param-reassign */
 
   /**
-   * Get all cities
+   * Get all tasks
    * @param {ctx} Koa Context
    */
   async find(ctx) {
     ctx.body = await Tasks.find();
+    console.log('find', ctx.body);
   }
 
   /**
    * Find a task
    * @param {ctx} Koa Context
    */
-  async findById(ctx) {
+  async findByTaskId(ctx) {
     try {
-      const task = await Tasks.findById(ctx.params.id);
+      const task = await Tasks.find({taskId: ctx.params.id});
       if (!task) {
         ctx.throw(404);
       }
       ctx.body = task;
+      console.log('findByTaskId', task);
     } catch (err) {
       if (err.name === 'CastError' || err.name === 'NotFoundError') {
         ctx.throw(404);
@@ -35,9 +37,11 @@ class TasksControllers {
    * @param {ctx} Koa Context
    */
   async add(ctx) {
+    console.log('add ...');
     try {
       const task = await new Tasks(ctx.request.body).save();
       ctx.body = task;
+      console.log('add', task);
     } catch (err) {
       ctx.throw(422);
     }
@@ -49,14 +53,12 @@ class TasksControllers {
    */
   async update(ctx) {
     try {
-      const task = await Tasks.findByIdAndUpdate(
-        ctx.params.id,
-        ctx.request.body
-      );
+      const task = await Tasks.update({taskId: ctx.params.id}, ctx.request.body);
       if (!task) {
         ctx.throw(404);
       }
       ctx.body = task;
+      console.log('update', task);
     } catch (err) {
       if (err.name === 'CastError' || err.name === 'NotFoundError') {
         ctx.throw(404);
@@ -71,7 +73,7 @@ class TasksControllers {
    */
   async delete(ctx) {
     try {
-      const task = await Tasks.findByIdAndRemove(ctx.params.id);
+      const task = await Tasks.deleteMany({taskId: ctx.params.id});
       if (!task) {
         ctx.throw(404);
       }

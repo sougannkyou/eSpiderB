@@ -1,25 +1,16 @@
 import mongoose from 'mongoose';
 
-const { Schema } = mongoose;
+const {Schema} = mongoose;
 
 // To fix https://github.com/Automattic/mongoose/issues/4291
 mongoose.Promise = global.Promise;
 
-const taskSchema = new Schema({
-  name: {
-    type: String,
-    required: true
+const taskSchema = new Schema(
+  {
+    taskId: {type: Number},
+    code: {type: String}
   },
-  totalPopulation: {
-    type: Number,
-    required: true
-  },
-  country: String,
-  zipCode: Number,
-  updated: {
-    type: Date,
-    default: Date.now
-  }
-});
+  {versionKey: '__lock_key'}
+);
 
-export default mongoose.model('Task', taskSchema);
+export default mongoose.model('tasks', taskSchema);

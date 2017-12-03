@@ -1,12 +1,11 @@
 # eSpider backend server for tasks
 
 ## Description
-Koa 2 RESTful API using :
+Koa2 RESTful API using :
 
- - Koa 2
+ - Koa2
  - Mongodb + Mongoose
- - Babel
- - Asynchronous Functions (Async/Await)
+ - Async/Await
 
 ## Running
 Install dependencies
