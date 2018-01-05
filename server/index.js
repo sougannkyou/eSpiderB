@@ -3,9 +3,9 @@ import Koa from 'koa';
 import logger from 'koa-logger';
 import mongoose from 'mongoose';
 import routing from './routes/';
-import { port, connexionString } from './config';
+import {port, connexionString} from './config';
 
-mongoose.connect(connexionString);
+mongoose.connect(connexionString, {useMongoClient: true});
 mongoose.connection.on('error', console.error);
 
 // Create Koa Application

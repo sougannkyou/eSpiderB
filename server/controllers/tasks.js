@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import Tasks from '../models/tasks';
 
 class TasksControllers {
@@ -37,12 +38,13 @@ class TasksControllers {
    * @param {ctx} Koa Context
    */
   async add(ctx) {
-    console.log('add ...');
+    console.log('[task manager] add task ...');
     try {
       const task = await new Tasks(ctx.request.body).save();
-      ctx.body = task;
-      console.log('add', task);
+      console.log('[task manager] add task:', task);
+      ctx.body = task.get('_id');
     } catch (err) {
+      console.log('[task manager] add task error:', err);
       ctx.throw(422);
     }
   }

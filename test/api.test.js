@@ -1,12 +1,12 @@
-import app from '../server/';
 import supertest from 'supertest';
 import {expect, should} from 'chai';
+import app from '../server/';
 
 const temp = {};
 const request = supertest.agent(app.listen());
 should();
 
-describe('POST /task', () => {
+describe('POST /tasks', () => {
   it('should add a task', done => {
     request
       .post('/api/tasks')
