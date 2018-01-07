@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import mongoose from 'mongoose';
 
 const {Schema} = mongoose;
@@ -7,8 +8,11 @@ mongoose.Promise = global.Promise;
 
 const taskSchema = new Schema(
   {
-    taskId: {type: Number},
-    code: {type: String}
+    taskId: {type: String},
+    status: {type: String},
+    code: {type: String},
+    result: {type: String},
+    priority: {type: Number}
   },
   {versionKey: '__lock_key'}
 );

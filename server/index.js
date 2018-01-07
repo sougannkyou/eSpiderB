@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import routing from './routes/';
 import {port, connexionString} from './config';
 
-mongoose.connect(connexionString, {useMongoClient: true});
+mongoose.connect(connexionString);
 mongoose.connection.on('error', console.error);
 
 // Create Koa Application
@@ -22,3 +22,4 @@ app.listen(port, () =>
   console.log(`✅  The server is running at http://localhost:${port}/`)
 );
 export default app;
+
