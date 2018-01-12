@@ -1,7 +1,7 @@
-/* eslint-disable linebreak-style */
 const request = require('request');
 const {JSDOM} = require('jsdom');
-const URL = 'http://127.0.0.1:4444/dashboard';
+
+const URL = 'http://192.168.130.220:4444/dashboard';
 const client = require('mongodb').MongoClient;
 
 
@@ -23,7 +23,7 @@ async function updateStatus() {
       if (!error && response.statusCode === 200) {
         const jsdom = new JSDOM(body);
         const taskInfo = jsdom.window.document.querySelectorAll("li.nav-item > a");
-        taskInfo.forEach((info, i) => {
+        taskInfo.forEach((info) => {
           const taskId = info.getAttribute("data-test-build");
           const status = info.getAttribute("data-test-status");
           const updateTime = info.getAttribute("data-date-time");

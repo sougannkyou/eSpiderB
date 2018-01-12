@@ -3,10 +3,19 @@ import Tasks from '../models/tasks';
 
 class TasksControllers {
   /* eslint-disable no-param-reassign */
+  /**
+   * Get all tasks
+   * @param {ctx} Koa2 Context
+   */
+  async findByUrl(ctx) {
+    console.log('findByUrl', ctx.params, ctx.parameters);
+    ctx.body = await Tasks.find();
+    console.log('findByUrl', ctx.body);
+  }
 
   /**
    * Get all tasks
-   * @param {ctx} Koa Context
+   * @param {ctx} Koa2 Context
    */
   async find(ctx) {
     ctx.body = await Tasks.find();

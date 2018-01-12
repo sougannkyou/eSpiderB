@@ -20,7 +20,7 @@
   "scripts": {
     "start": "nodemon server/ --exec babel-node",
     "build": "babel server -d dist",
-    "lint": "eslint ./server",
+    "lint": "eslint --fix ./server",
     "test": "npm run lint && npm run mocha",
     "prod": "npm run build && node dist/",
     "mocha": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --exit"
@@ -38,12 +38,13 @@
     "lowdb": "^1.0.0",
     "moment": "^2.20.1",
     "mongodb": "^3.0.1",
+    "mongoose": "^4.13.9",
     "npm": "^5.6.0",
     "package.json": "^2.0.1",
     "request": "^2.83.0",
     "selenium": "^2.20.0",
     "selenium-webdriver": "^3.6.0",
-    "ws": "^4.0.0"
+    "ws": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import 'babel-polyfill';
 import Router from 'koa-router';
 import {baseApi} from '../config';
@@ -8,6 +9,9 @@ const api = 'tasks';
 const router = new Router();
 
 router.prefix(`/${baseApi}/${api}`);
+
+// GET /api/tasks/startUrl
+router.get('/searchUrl', TasksControllers.findByUrl);
 
 // GET /api/tasks
 router.get('/', TasksControllers.find);

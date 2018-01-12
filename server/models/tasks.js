@@ -10,6 +10,7 @@ const taskSchema = new Schema(
   {
     taskId: {type: String},
     status: {type: String},
+    startUrl: {type: String},
     code: {type: String},
     result: {type: String},
     priority: {type: Number}
